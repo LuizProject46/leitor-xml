@@ -34,17 +34,20 @@ async function requestUpload(file){
             },
         })
 
-        if(response.status !== 200){
-            alert(response.data.message)
+        let {data: result} = response
+
+        if(result.status !== 200){
+            hideLoader()
+            alert(result.message)
             return
         }
-       
+
         hideLoader()
-        showTable(response.data.data)
+        showTable(result.data)
 
     }catch(err) {
         console.error(err.message)
-        alert("Houve um erro ao fazer upload!")
+        //alert("Houve um erro ao fazer upload!")
     }
 }
 

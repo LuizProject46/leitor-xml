@@ -14,21 +14,26 @@ class Uploader {
 
 
     public function validateFile(array $file) {
+        try {
 
-        $fileTmpPath = $file["tmp_name"];
-        $fileType    = $file["type"];
-        $xml = XMLReader::open($fileTmpPath);
-        $xml->setParserProperty(XMLReader::VALIDATE, true);
+            $fileTmpPath = $file["tmp_name"];
+            $fileType    = $file["type"];
+          
+            if(!in_array($fileType, $this->allowedFiles)){
+                return false;
+            }
+            
+            if(!is_object(simplexml_load_file($fileTmpPath))){
+                return false;
+            }
 
-        if(!in_array($fileType, $this->allowedFiles)){
+            return true;
+               
+        }catch(Exception $err){
+
             return false;
         }
 
-        if(!$xml->isValid()){
-            return false;
-        }
-
-        return true;
 
     }
 
