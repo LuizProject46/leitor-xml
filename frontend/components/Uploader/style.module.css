@@ -1,0 +1,60 @@
+.uploaderContainer{
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    background: var(--white);
+    margin-top: -4rem;
+    box-shadow: 0 0 1rem #3333;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    
+}
+
+.uploaderButton{
+    width: 100%;
+    height: 160px;
+    border-radius: 1.2rem;
+    border: 0.15rem dashed var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+}
+
+.uploaderButton:hover{
+    border-color: var(--primary);
+    opacity: 0.4;
+}
+
+.uploaderButton span {
+    color: var(--primary);
+    font-size: 1.2rem;
+    display: none;
+}
+
+.loader{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 0.3rem solid var(--secondary);
+    border-top-color: var(--primary);
+    animation: rotate 0.8s infinite linear;
+    display: none;
+}
+
+.loader.show,
+.uploaderButton span.show{
+    display: block;
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
